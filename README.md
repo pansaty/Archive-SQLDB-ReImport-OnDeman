@@ -1,4 +1,4 @@
-# End to End import of .bacpac files in Azure Blob to SQLDB
+# Archive your SQLDB to BLOB and reimport on demand
 
 If you were ever in need to archive SQL databases into blob storage as it was no longer needed for active development, but needed a process to ondemand be able to recover those databases, this guide will walk you thru end to end to create this solution. 
 
@@ -18,9 +18,11 @@ In addition this guide assumes that you are also already aware of how to export 
 ## Create a Credential to connect to Azure SQLDB for use by Azure Automation
 Open your Azure Automation account, (1) navigate to Credentials and (2) click <b>Add a credential<b> 
 
-![alt text](https://github.com/pansaty/Archive-SQLDB-ReImport-OnDemand/tree/master/images/createcredential.png "Create credential")
+
+
+![alt text](images/createcredential.PNG "Create credential")
 
 Fill in the name of your credential, Username used to connect to your AzureSQLDB Server that has admin access along with the password to authenticate with. 
 
-![alt text](https://github.com/pansaty/Archive-SQLDB-ReImport-OnDemand/tree/master/images/createcredentialdetails.png "Create credential details")
+![alt text](images/createcredentialdetails.PNG "Create credential details")
 
