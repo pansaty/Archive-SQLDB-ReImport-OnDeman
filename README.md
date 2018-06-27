@@ -18,9 +18,9 @@ In addition this guide assumes that you are also already aware of how to export 
 ## Create a Credential to connect to Azure SQLDB for use by Azure Automation
 Open your Azure Automation account, (1) navigate to Credentials and (2) click <b>Add a credential<b> 
 
-![alt text](/images/createcredential.png "Create credential")
+![alt text](https://github.com/pansaty/Archive-SQLDB-ReImport-OnDemand/tree/master/images/createcredential.png "Create credential")
 
 Fill in the name of your credential, Username used to connect to your AzureSQLDB Server that has admin access along with the password to authenticate with. 
 
-![alt text](/images/createcredentialdetails.png "Create credential details")
+![alt text](https://github.com/pansaty/Archive-SQLDB-ReImport-OnDemand/tree/master/images/createcredentialdetails.png "Create credential details")
 
