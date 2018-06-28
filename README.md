@@ -68,7 +68,6 @@ Next, choose (1) <b>Import an existing runbook</b> (2)Browse to the runbook file
 ![alt text](images/importdetails.png "Import details")
 
 
-## Credits
- * Kelly for the inspiration to create this. 
+## Acknowledgements
 
  
