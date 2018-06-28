@@ -28,7 +28,7 @@ This solution leverages two PowerShell Workflow runbooks
 
 Download the two runbooks from the [powershell_workflows](https://github.com/pansaty/Archive-SQLDB-ReImport-OnDemand/tree/master/powershell_workflows) folder.
 
-## Understanding Archive-SQLDB-AzureAutomation Runbook
+### Understanding Archive-SQLDB-AzureAutomation Runbook
 This workflow takes a list of databases comma seperated and stored in the <b>$Databases</b> variable, loops thru and exports to storage. If the <b>$deletedatabases</b> variable is set to $true, the databases are deleted after being exported.
 
 All variable configuration is done at the top of the script, and the variable names all have comments on the purpose. There should be no changes needed in the rest of the script for it to functionally work. You can however customize the rest of the script to meet the rest of your specific needs.
@@ -44,7 +44,7 @@ The general flow of the workflow is:
  * Wait until export is completed
  * If $deletedatabases is set to $true and databases exported successfully, delete the database
 
-## Understanding Import-ArchivedSQLDB-AzureAutomation Runbook
+### Understanding Import-ArchivedSQLDB-AzureAutomation Runbook
 This workflow takes a list of databases comma seperated and stored in the <b>$Databases</b> variable, loops thru and imports from storage.
 
 All variable configuration is done at the top of the script, and the variable names all have comments on the purpose. There should be no changes needed in the rest of the script for it to functionally work. You can however customize the rest of the script to meet the rest of your specific needs.
