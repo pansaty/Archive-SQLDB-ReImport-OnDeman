@@ -10,7 +10,15 @@ Technologies that will be leveraged:
 ## Pre-Requisites
 This guide assumes that you have already created an Azure Automation Account, if not see this [link](https://docs.microsoft.com/en-us/azure/automation/automation-create-standalone-account) which will walk you thru creating an Azure Automation Account which by default also creates a RunAs account which has contributor access at the Subscription Level. If you wanted to add additional RunAs accounts see [Update your Automation account authentication with Run As accounts](https://docs.microsoft.com/en-us/azure/automation/automation-create-runas-account).
 
-## Step 1) Create a Credential to connect to Azure SQLDB for use by Azure Automation
+## Step 1) Ensure you have the latest AzureRM.SQL module installed in you Automation Account
+In you Azure Automation account, navigate to (1) Modules. Confirm that the AzureRM.SQL module is present and version 4.6.1 or higher. This script was tested on 4.6.1. 
+
+If an older version of the module is present, select (2) <b>Update Azure Modules</b>. THis may take several minutes.
+![alt_text](images/azurerm.sql-module.PNG "Azure Module")
+
+If the AzureRM.Sql module is not present, select <b>Browse Gallery</b> and search for AzureRM.Sql, select then import. This may take several minutes. Once the import is completed, ensure that it is at version 4.6.1 or higher, if not follow the previous steps to Update the Azure modules. 
+
+## Step 2) Create a Credential to connect to Azure SQLDB for use by Azure Automation
 Open your Azure Automation account, (1) navigate to Credentials and (2) click <b>Add a credential</b> 
 
 
@@ -21,7 +29,7 @@ Fill in the name of your credential, Username used to connect to your AzureSQLDB
 
 ![alt text](images/createcredentialdetails.PNG "Create credential details")
 
-## Step 2) Download the Runbooks
+## Step 3) Download the Runbooks
 This solution leverages two PowerShell Workflow runbooks
  * <b>Archive-SQLDB-AzureAutomation.ps1</b>. This is used to export the databases to bacpac files on blob and optionally delete the DBs
  * <b>Import-ArchivedSQLDB-AzureAutomation.ps1</b>. This is used to reimport the bacpac on demand 
@@ -60,11 +68,11 @@ The general flow of the workflow is:
  * Start the Import job
  * Wait until import is completed
 
-## Step 3) Importing the RunBooks
+## Step 4) Importing the RunBooks
 Within your Azure Automation account, navigate to (1) Runbooks then choose (2) Add Runbook
 ![alt text](images/importrunbooks.png "ImportRunbooks")
 
-Next, choose (1) <b>Import an existing runbook</b> (2)Browse to the runbook files you downloaded in Step 2) (3) <b>Hit Create</b>
+Next, choose (1) <b>Import an existing runbook</b> (2)Browse to the runbook files you downloaded in Step 3) (3) <b>Hit Create</b>
 ![alt text](images/importdetails.png "Import details")
 
 
