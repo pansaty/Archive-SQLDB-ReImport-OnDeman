@@ -8,15 +8,15 @@ Technologies that will be leveraged:
   * Azure SQLDB
 
 ## Pre-Requisites
-This guide assumes that you have already created an Azure Automation Account, if not see this [link](https://docs.microsoft.com/en-us/azure/automation/automation-create-standalone-account) which will walk you thru creating an Azure Automation Account which by default also creates a RunAs account which has contributor access at the Subscription Level. If you wanted to add additional RunAs accounts see [Update your Automation account authentication with Run As accounts](https://docs.microsoft.com/en-us/azure/automation/automation-create-runas-account).
+This guide assumes that you have already created an Azure Automation Account, if not see this [link](https://docs.microsoft.com/en-us/azure/automation/automation-create-standalone-account) which will walk you thru creating an Azure Automation Account. By default this creates a RunAs account which has contributor access at the subscription Level. If you wanted to add additional RunAs accounts see [Update your Automation account authentication with Run As accounts](https://docs.microsoft.com/en-us/azure/automation/automation-create-runas-account).
 
 ## Step 1) Ensure you have the latest AzureRM.SQL module installed in your Automation Account
-In you Azure Automation account, navigate to (1) Modules. Confirm that the AzureRM.SQL module is present and version 4.6.1 or higher. This script was tested on 4.6.1. 
+In your Azure Automation account, navigate to (1) Modules. Confirm that the AzureRM.SQL module is present and it is version 4.6.1 or higher. This script was tested on 4.6.1. 
 
-If an older version of the module is present, select (2) <b>Update Azure Modules</b>. THis may take several minutes.
+If an older version of the module is present, select (2) <b>Update Azure Modules</b>. This may take several minutes.
 ![alt_text](images/azurerm.sql-module.PNG "Azure Module")
 
-If the AzureRM.Sql module is not present, select <b>Browse Gallery</b> and search for AzureRM.Sql, select then import. This may take several minutes. Once the import is completed, ensure that it is at version 4.6.1 or higher, if not follow the previous steps to Update the Azure modules. 
+If the AzureRM.Sql module is not present, select <b>Browse Gallery</b> and search for AzureRM.Sql, select then import. This may take several minutes. Once the import is completed, ensure that it is at version 4.6.1 or higher, if not follow the previous steps to update the Azure modules. 
 
 ## Step 2) Create a Credential to connect to Azure SQLDB for use by Azure Automation
 Open your Azure Automation account, (1) navigate to Credentials and (2) click <b>Add a credential</b> 
@@ -25,7 +25,7 @@ Open your Azure Automation account, (1) navigate to Credentials and (2) click <b
 
 ![alt text](images/createcredential.PNG "Create credential")
 
-Fill in the name of your credential, Username used to connect to your AzureSQLDB Server that has admin access along with the password to authenticate with. 
+Fill in the name of your credential, Username used to connect to your AzureSQLDB Server that has admin access along with the password. 
 
 ![alt text](images/createcredentialdetails.PNG "Create credential details")
 
