@@ -36,6 +36,8 @@ This solution leverages two PowerShell Workflow runbooks
 
 Download the two runbooks from the [powershell_workflows](https://github.com/pansaty/Archive-SQLDB-ReImport-OnDemand/tree/master/powershell_workflows) folder.
 
+You will need to modify the top section of each script marked by <b>###### BEGIN VARIABLE CONFIGURATION  #####<b>
+
 ### Understanding Archive-SQLDB-AzureAutomation Runbook
 This workflow takes a list of databases comma seperated and stored in the <b>$Databases</b> variable, loops thru and exports to storage. If the <b>$deletedatabases</b> variable is set to $true, the databases are deleted after being exported.
 
@@ -48,7 +50,7 @@ The general flow of the workflow is:
  * Login to Azure using the Azure Automation RunAs account
  * Get the credential needed to login into the Logical SQL Server hosting the databases to be archived
  * Confirm that the databases are online
- * Start and Export Job to export the database
+ * Start an Export Job to export the database
  * Wait until export is completed
  * If $deletedatabases is set to $true and databases exported successfully, delete the database
 
@@ -72,9 +74,14 @@ The general flow of the workflow is:
 Within your Azure Automation account, navigate to (1) Runbooks then choose (2) Add Runbook
 ![alt text](images/importrunbooks.png "ImportRunbooks")
 
-Next, choose (1) <b>Import an existing runbook</b> (2)Browse to the runbook files you downloaded in Step 3) (3) <b>Hit Create</b>
+Next, choose (1) <b>Import an existing runbook</b> (2)Browse to the runbook files you downloaded in Step 3) (3) <b>Hit Create</b>. You would need to do this once for each of the runbook files you downloaded.
 ![alt text](images/importdetails.png "Import details")
 
+## Step 5) Publish and Run the Runbooks
+At this point you are all set to run the Runbooks manually, or schedule it to run. In your Azure Automation account, navigate to Runbooks and confirm that you see both the Runbooks that you imported, <b>Archive-SQLDB</b> and <b>Import-ArchiveSQLDB</b>
+![alt text](images/runbooks.PNG "Runbooks")
+
+Select the Archive-SQLDB runbook, 
 
 ## Acknowledgements
 
