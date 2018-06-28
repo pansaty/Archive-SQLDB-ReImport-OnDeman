@@ -14,6 +14,7 @@ workflow Import-ArchivedSQLDB
         ##### BEGIN VARIABLE CONFIGURATION #####
         $connectionName = "AzureRunAsConnection" #Azure Automation RunAs Account
         $LogicalSQLServer =  'pankajsql' #Logical SQL Server in Azure hosting the databases to be archived
+        $sqladmincredential ='PankajTSP-SQLAdmin' # SQL Credentials with admin access to logical server
         $StorageAccountName = 'pankajstorage' #Storage account that you will be storing the bacpac files to
         $container ='sqlbackups' #container storing bacpac files. DO NOT INCLUDE FOLDER NAME HERE
         $folder = 'sqldbexports' #use if a folder is used within the container to organize bacpac
@@ -51,7 +52,7 @@ workflow Import-ArchivedSQLDB
     		}
 		}
         
-        $SQLCredential = Get-AutomationPSCredential -Name 'PankajTSP-SQLAdmin'
+        $SQLCredential = Get-AutomationPSCredential -Name $sqladmincredential
         #$SQLCredential = Get-Credential    
         
  		$SQLServer = Get-AzureRmResource | Where-Object ResourceType -EQ "Microsoft.Sql/servers" |  ? {$_.name -eq $LogicalSQLServer}

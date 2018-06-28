@@ -14,6 +14,7 @@ workflow Archive-SQLDB
         ##### BEGIN VARIABLE CONFIGURATION #####
         $connectionName = "AzureRunAsConnection" #Azure Automation RunAs Account
         $LogicalSQLServer =  'pankajsql' #Logical SQL Server in Azure hosting the databases to be archived
+        $sqladmincredential ='PankajTSP-SQLAdmin' # SQL Credentials with admin access to logical server
         $StorageAccountName = 'pankajstorage' #Storage account that you will be storing the bacpac files to
         $container ='sqlbackups/sqldbexports' #Container in storage account to export bacpac files to. If using a folder within the container, include that also
         $Databases = 'MyDemoDB','dsmeta', 'sqldwtest' # comma seperated list of databases to archive
@@ -47,7 +48,7 @@ workflow Archive-SQLDB
     		}
 		}
         #Below Credential needs to be created in Azure Automation
-		$SQLCredential = Get-AutomationPSCredential -Name 'PankajTSP-SQLAdmin'
+		$SQLCredential = Get-AutomationPSCredential -Name $sqladmincredential
         #$SQLCredential = Get-Credential    
         
  		$SQLServer = Get-AzureRmResource | Where-Object ResourceType -EQ "Microsoft.Sql/servers" |  ? {$_.name -eq $LogicalSQLServer}
