@@ -12,18 +12,18 @@ workflow Import-ArchivedSQLDB
 {
     	inlineScript {
         ##### BEGIN VARIABLE CONFIGURATION #####
-        $connectionName = "AzureRunAsConnection" 
-        $LogicalSQLServer =  'pankajtsp'
-        $StorageAccountName = 'pankajcsa'
-        $container ='sqlbackups'
-        $folder = 'sqldbexports'
+        $connectionName = "AzureRunAsConnection" #Azure Automation RunAs Account
+        $LogicalSQLServer =  'pankajsql' #Logical SQL Server in Azure hosting the databases to be archived
+        $StorageAccountName = 'pankajstorage' #Storage account that you will be storing the bacpac files to
+        $container ='sqlbackups' #container storing bacpac files. DO NOT INCLUDE FOLDER NAME HERE
+        $folder = 'sqldbexports' #use if a folder is used within the container to organize bacpac
         $Databases = 'MyDemoDB','dsmeta', 'sqldwtest' # comma seperated list of databases to archive
         $ExportJobTimeOut = 14400 # 4Hours. Keep checking status of database export for up to 4 hours before throwing in the towel. Databsae will not be put on list to be deleted
         $SleepTimer = 30 #how long to sleep before checking export status again
         #Below variables needed for New-AzureRmSqlDatabaseImport
-        $Edition = 'Basic'
+        $Edition = 'Basic' #Tier of SQLDB to use when imported can be Basic, Standard, Premium
         $ServiceObjectiveName = 'Basic' # see: https://docs.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database?view=azuresqldb-current
-        $DatabaseMaxSizeBytes = '410000000'
+        $DatabaseMaxSizeBytes = '410000000' #Storage to allocate to the DB in Bytes when it is created.
         ##### END VARIABLE CONFIGURATION #####
 
 		

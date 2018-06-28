@@ -12,12 +12,12 @@ workflow Archive-SQLDB
 {
     	inlineScript {
         ##### BEGIN VARIABLE CONFIGURATION #####
-        $connectionName = "AzureRunAsConnection" 
-        $LogicalSQLServer =  'pankajtsp'
-        $StorageAccountName = 'pankajcsa'
-        $container ='sqlbackups/sqldbexports'
+        $connectionName = "AzureRunAsConnection" #Azure Automation RunAs Account
+        $LogicalSQLServer =  'pankajsql' #Logical SQL Server in Azure hosting the databases to be archived
+        $StorageAccountName = 'pankajstorage' #Storage account that you will be storing the bacpac files to
+        $container ='sqlbackups/sqldbexports' #Container in storage account to export bacpac files to. If using a folder within the container, include that also
         $Databases = 'MyDemoDB','dsmeta', 'sqldwtest' # comma seperated list of databases to archive
-        $ExportJobTimeOut = 14400 # 4Hours. Keep checking status of database export for up to 4 hours before throwing in the towel. Databsae will not be put on list to be deleted
+        $ExportJobTimeOut = 14400 # 4Hours. Keep checking status of database export for up to 4 hours before throwing in the towel. Database will not be put on list to be deleted
         $SleepTimer = 30 #how long to sleep before checking export status again
         $deletedatabases = $true # variable to control whether databases are removed after succcessfully exporting
         ##### END VARIABLE CONFIGURATION #####
@@ -46,7 +46,7 @@ workflow Archive-SQLDB
         		throw $_.Exception
     		}
 		}
-        
+        #Below Credential needs to be created in Azure Automation
 		$SQLCredential = Get-AutomationPSCredential -Name 'PankajTSP-SQLAdmin'
         #$SQLCredential = Get-Credential    
         
