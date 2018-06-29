@@ -81,7 +81,14 @@ Next, choose (1) <b>Import an existing runbook</b> (2)Browse to the runbook file
 At this point you are all set to run the Runbooks manually, or schedule it to run. In your Azure Automation account, navigate to Runbooks and confirm that you see both the Runbooks that you imported, <b>Archive-SQLDB</b> and <b>Import-ArchiveSQLDB</b>
 ![alt text](images/runbooks.PNG "Runbooks")
 
-Select the Archive-SQLDB runbook, 
+Select the Archive-SQLDB runbook. You will be unable to select <b>Start</b> or <b>View</b> as the runbook has not yet been published. Click on <b>Edit</b>. Before publishing, let's test the runbook by selecting <b>Test Pane</b>. In the Test Pane, select <b>Start</b>. You should see the output from the runbook in the right pane. This will take several minutes to run and if all variable parameters were set correctly, should complete without errors.
+![alt text](images/testpane.PNG "Test Pane")
+
+At this point you are ready to publish the Archive-SQLDB runbook. Navigate back to <b>Edit PowerShell Workflow Runbook</b> in the breadcrumbs as highlighted in the above screen shot. In the Edit View, go ahead and select <b>Publish</b>. Your runbook is now ready to be scheduled or run on demand. For details on setting up a schedule see [here](https://docs.microsoft.com/en-us/azure/automation/automation-schedules#creating-a-schedule).
+
+Repeat the same procedure for the <b>Import-ArchiveSQLDB</b> runbook. 
+
+<b>Note:</b> If you run the Import-ArchiveSQLDB after databases have been removed, ther
 
 ## Acknowledgements
 
