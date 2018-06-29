@@ -73,6 +73,8 @@ workflow Import-ArchivedSQLDB
             {
                 "found $($blob.Name) for $database. Initiating Import"
                  $StorageUri = "http://$StorageAccountName.blob.core.windows.net/$container/$($blob.Name)"
+                 #Check if Database already exists on server
+                 $DBStatus = Get-AzureRmSqlDatabase -ResourceGroupName $SQLServer.ResourceGroupName -ServerName $LogicalSQLServer -DatabaseName $database -ErrorAction SilentlyContinue|  Select Status
                  If ($DBStatus){"$database already exists on $LogicalSQLServer skipping..."}
                  Else
                  {
