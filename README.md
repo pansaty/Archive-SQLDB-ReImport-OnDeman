@@ -36,7 +36,7 @@ This solution leverages two PowerShell Workflow runbooks
 
 Download the two runbooks from the [powershell_workflows](https://github.com/pansaty/Archive-SQLDB-ReImport-OnDemand/tree/master/powershell_workflows) folder.
 
-You will need to modify the top section of each script marked by <b>###### BEGIN VARIABLE CONFIGURATION  #####<b>
+You will need to modify the top section of each script marked by <b>###### BEGIN VARIABLE CONFIGURATION  #####</b>
 
 ### Understanding Archive-SQLDB-AzureAutomation Runbook
 This workflow takes a list of databases comma seperated and stored in the <b>$Databases</b> variable, loops thru and exports to storage. If the <b>$deletedatabases</b> variable is set to $true, the databases are deleted after being exported.
