@@ -88,8 +88,4 @@ At this point you are ready to publish the Archive-SQLDB runbook. Navigate back 
 
 Repeat the same procedure for the <b>Import-ArchiveSQLDB</b> runbook. 
 
-<b>Note:</b> If you run the Import-ArchiveSQLDB after databases have been removed, ther
-
-## Acknowledgements
-
  
