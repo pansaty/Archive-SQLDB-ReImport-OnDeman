@@ -107,5 +107,3 @@ workflow Import-ArchivedSQLDB
         }
     }
 }
-
-#2. Check for list of datbases provided vs what was imported and fail if mismatch
